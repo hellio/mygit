@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>components创建私有组件</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		这里不能使用app2里的组件
+	</div>
+
+	<div id = "app2">
+		<!--组件创建完毕后在被控制的app标签里引入组件标签名-->
+		<login></login>
+	</div>
+	<!-- 在被控制的 #app 外面，使用原生template元素，定义组件的HTML模板结构-->
+	<template id = "teml2">
+		<div>
+			这是一个私有的组件
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+			el:"#app",
+			data:{
+
+			},
+			methods:{
+
+			}
+		});
+
+	var app2 = new Vue({
+			el:"#app2",
+			data:{
+
+			},
+			methods:{
+
+			},
+			components:{
+				login:{//login属性也是组件的标签名
+					template:"#teml2"
+				}
+			}
+		});
+</script>
+</html>
