@@ -21,6 +21,13 @@
 	//2.2 Vue.component('myCom1',com1)
 	//如果使用Vue.component定义的全局组件的时候，组件的名称驼峰命名，则在引用组件的时候，需要把大写的驼峰改为小写字母,，同时使用-隔开；
 	//如果不使用驼峰，则直接那名称来使用即可
+	
+	//Vue.component('myCom1',com1);
+	//第二个参数：Vue.extend创建的组件，其中template就是组件将来要展示的HTML内容
+	/*Vue.component('mycom1',Vue.extend({
+		template:'<h3>这是使用了Vue.extend创建的组件<h3>'
+	}));*/
+
 	Vue.component('myCom1',com1);
 
 	var app = new Vue({
