@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>为什么组件的data要一个function？</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<comp></comp>
+		<comp></comp>
+		<comp></comp>
+	</div>
+
+	<template id = "temp">
+		<div>
+			<button @click = "increment">+1</button>
+			<h1>{{count}}</h1>
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	//如果在外部定义一个全局变量对象，那么在多次使用组件的时候，触发一个事件就会导致其它组件的数值发生变化
+	/*var obj = { count:0 };
+
+	Vue.component('comp',{
+		template:'#temp',
+		data:function(){//组件里data需要用一个匿名函数并且返回一个对象
+			return obj
+		},
+		methods:{
+			increment(){
+				this.count++
+			}
+		}
+	});*/
+	//在data里面return对象，就不会导致这种情况发生
+	Vue.component('comp',{
+		template:'#temp',
+		data:function(){//组件里data需要用一个匿名函数并且返回一个对象
+			return {
+				count:0
+			}
+		},
+		methods:{
+			increment(){
+				this.count++
+			}
+		}
+	});
+
+	var app = new Vue({
+		el:'#app',
+		data:{},
+		methods:{}
+	});
+</script>
+</html>
