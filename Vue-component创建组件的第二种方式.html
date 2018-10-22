@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.component第二种方式</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<!--使用标签形式引入自己的组件-->
+		<my-com2></my-com2>	
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.component('myCom2',{
+		//创建元素的第二种方式，直接用对象字面量方式
+		//注意：无论哪种方式创建出来的组件，组件的template属性指向的模板内容，必须有且只有一个唯一的一个根元素
+		template:'<h3>这是直接使用了Vue.component创建出来的组件</h3>'
+	})
+
+	var app = new Vue({
+		el:"#app",
+		data:{
+
+		},
+		methods:{
+
+		}
+	});
+</script>
+</html>
