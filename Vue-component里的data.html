@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组件中的data</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<comp></comp>
+	</div>
+
+	<template id = "temp">
+		<h1>{{msg}}</h1>
+	</template>
+</body>
+<script type="text/javascript">
+	Vue.component('comp',{
+		template:'#temp',
+		data:function(){//组件里data需要用一个匿名函数并且返回一个对象
+			return {
+				msg:'这是组件定义的data数据'
+			}
+		}
+	});
+
+	var app = new Vue({
+		el:'#app',
+		data:{},
+		methods:{}
+	});
+</script>
+</html>
