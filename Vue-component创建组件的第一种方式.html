@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-if and v-else</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<my-com1></my-com1>	
+	</div>
+</body>
+<script type="text/javascript">
+	//1.使用vue.extend 来创建全局的vue组件
+	var com1 = Vue.extend({
+		//通过template属性制定要展示的html模板
+		template:'<h3>这是使用了Vue.extend创建的组件'
+	});
+
+	//2.1 使用Vue.component('组件的名称'，创建出来的组件模板对象)
+	//2.2 Vue.component('myCom1',com1)
+	//如果使用Vue.component定义的全局组件的时候，组件的名称驼峰命名，则在引用组件的时候，需要把大写的驼峰改为小写字母,，同时使用-隔开；
+	//如果不使用驼峰，则直接那名称来使用即可
+	Vue.component('myCom1',com1);
+
+	var app = new Vue({
+		el:"#app",
+		data:{
+
+		},
+		methods:{
+
+		}
+	});
+</script>
+</html>
