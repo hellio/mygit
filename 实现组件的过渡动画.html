@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>实现组件的过渡动画</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		/*定义动画进入开始的状态和结束时
+		定义动画离开结束的状态*/
+		.v-enter,.v-leave-to{
+			opacity:0;
+			transform: translateX(150px);
+		}
+		.v-enter-avtive,.v-leave-active{
+			transition: all 0.5s ease;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<a href="" @click.prevent="comName='login'">登录</a>
+		<a href="" @click.prevent="comName='register'">注册</a>
+		<!--通过mode属性实现组件切换的方式-->
+		<transition mode="out-in">
+			<component :is="comName"></component>
+		</transition>	
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.component('login',{
+		template:'<h3>登录组件</h3>'
+	});
+
+	Vue.component('register',{
+		template:'<h3>注册组件</h3>'
+	});
+
+	var app = new Vue({
+		el:'#app',
+		data:{
+			comName:'login'
+		}
+	});
+
+</script>
+</html>
