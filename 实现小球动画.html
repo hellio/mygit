@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>实现小球动画</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.ball{
+			width:15px;
+			height:15px;
+			background-color: red;
+			border-radius: 50%;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<input type="button" value = "加入购物车" @click = "flag = !flag">
+		<transition
+		@before-enter="beforeEnter"
+		@enter = "enter" 
+		@after-enter = "afterEnter">
+			<!--小球-->
+			<div class = "ball" v-show = "flag"></div>
+		</transition>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			flag:false
+		},
+		methods:{
+			beforeEnter(el){
+				el.style.transform = 'translate(0,0)';
+			},
+			enter(el,done){
+				el.offsetWidth;
+				//transform允许我们对函数进行移动，旋转，缩放或倾斜
+				el.style.transform = 'translate(150px,450px)';
+				//执行变换属性并逐渐变慢
+				el.style.transition = 'all 1.5s ease';
+				done();
+			},
+			afterEnter(el){
+				this.flag = !this.flag
+			}
+		}
+	});
+</script>
+</html>
