@@ -41,9 +41,11 @@
 				el.style.transform = 'translate(150px,450px)';
 				//执行变换属性并逐渐变慢
 				el.style.transition = 'all 1.5s ease';
+				//done函数是对afterEnter函数的调用
 				done();
 			},
 			afterEnter(el){
+				//小球移动到结束点时隐藏
 				this.flag = !this.flag
 			}
 		}
