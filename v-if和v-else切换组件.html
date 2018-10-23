@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-if 和 v-else 切换组件</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<a href="" @click.prevent = "flag = true">login</a>
+		<a href="" @click.prevent = "flag = false">register</a>
+		<login v-if = "flag"></login>
+		<register v-else = "flag"></register>
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.component('login',{
+		template:'<h3>登录组件</h3>'
+	});
+
+	Vue.component('register',{
+		template:'<h3>注册组件</h3>'
+	});
+
+	var app = new Vue({
+		el:'#app',
+		data:{
+			flag:true
+		}
+	});
+
+</script>
+</html>
