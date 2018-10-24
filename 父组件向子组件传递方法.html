@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>实现父组件向子组件传值得方法</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!--父组件-->
+	<div id = "app">
+		<h3>{{msg}}</h3>
+		<comp @func = "show"></comp>	
+	</div>
+	
+	<!--子组件-->
+	<template id = "teml">
+		<div>
+			<h3>这是一个子组件</h3>
+			<input type="button" value="传值" @click = "myclick">
+		</div>
+	</template>
+	<script type="text/javascript">
+	var app = new Vue({
+		//父组件
+		el:'#app',
+		data:{
+			msg:'这是一个父组件'
+		},
+		methods:{
+			show(){
+				alert('父组件被触发');
+			}
+		},
+		//注册子组件
+		components:{
+			comp:{
+				template:'#teml',
+				methods:{
+					myclick(){
+						this.$emit('func')
+					}
+				}
+			}
+		}
+	});
+	</script>
+</body>
+</html>
