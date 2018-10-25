@@ -9,8 +9,14 @@
 </head>
 <body>
 	<div id="app">
-		<a href="#/login">登录</a>
-		<a href="#/register">注册</a>
+		<!--<a href="#/login">登录</a>
+		<a href="#/register">注册</a>-->
+		<!--router-link 默认渲染一个a标签，可以使用tag更改标签名字-->
+		<router-link to="/login" tag="span">登录</router-link>
+		<router-link to="/register">注册</router-link>
+		<!--router-link 默认渲染一个a标签，可以使用tag更改标签名字-->
+		<!--这是vue-router提供的元素，专门用来当作占位符的，将来路由规则匹配到的组件就会展示到这个router-view这个中去-->
+		<!--所以router-view相当于一个占位符-->
 		<router-view></router-view>	
 	</div>
 
@@ -41,7 +47,7 @@
 			//属性2是component，表示如果路由前面匹配到的path则展示component属性对应的那个组件
 			//注意：component的属性值必须是一个组建的模板对象不能是一个名称
 				routes:[
-				routes:[
+					{path:'/',redirect:'/login'},
 					{path:'/login',component:login},
 					{path:'/register',component:register}
 				]
