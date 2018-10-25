@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>社区评论功能</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!--在vue.js的包的下导入vue-router包-->
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<a href="#/login">登录</a>
+		<a href="#/register">注册</a>
+		<router-view></router-view>	
+	</div>
+
+	<template id = "login">
+		<div>
+			<p>登录组件</p>
+		</div>
+	</template>
+
+	<template id = "register">
+		<div>
+			<p>注册组件</p>
+		</div>
+	</template>
+	
+	<script type="text/javascript">
+		var login ={
+			template:'#login'
+		};
+		var register = {
+			template:'#register'
+		}
+
+		var routerobj = new VueRouter({
+				routes:[
+					{path:'/login',component:login},
+					{path:'/register',component:register}
+				]
+			});
+
+		var app = new Vue({
+			el:'#app',
+			data:{},
+			methods:{},
+			router:routerobj
+		});
+	</script>
+</body>
+</html>
