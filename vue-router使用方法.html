@@ -33,8 +33,14 @@
 		var register = {
 			template:'#register'
 		}
-
+		//新建一个路由对象，当导入vue-router包以后，就有了一个路由的构造函数VueRouter
 		var routerobj = new VueRouter({
+			//routes表示表示路由匹配规则
+			//每个路由规则都是一个对象，这个规则对象身上必须有两个属性
+			//属性1是path，表示监听哪个路由地址
+			//属性2是component，表示如果路由前面匹配到的path则展示component属性对应的那个组件
+			//注意：component的属性值必须是一个组建的模板对象不能是一个名称
+				routes:[
 				routes:[
 					{path:'/login',component:login},
 					{path:'/register',component:register}
